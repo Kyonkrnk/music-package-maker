@@ -156,7 +156,7 @@
 
         const a = document.createElement("a");
         a.href = URL.createObjectURL(zipBlob);
-        a.download = `${metadata.title}_package.zip`;
+        a.download = `${metadata.title}_package`;
         a.click();
     } catch (err) {
         alert("エラーが発生しました: " + err.message);
