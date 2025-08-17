@@ -90,6 +90,7 @@
       <label>作曲: <input type="text" name="composer" required /></label>
       <label>編曲: <input type="text" name="arranger" required /></label>
       <label>ボーカル: <input type="text" name="vocal" required /></label>
+      <label>譜面作者(※使用する場合のみ入力): <input type="text" name="author"/></label>
 
       <label>音源ファイル (.mp3/.wav):
         <input type="file" name="audio" accept=".mp3,.wav" required />
@@ -125,13 +126,19 @@
     button.disabled = true;
     loadingDiv.classList.remove("hidden");
 
+    if (form.author.value !== "") {
+        const vocal = form.vocal.value + "　譜面作者：" + form.author.value;
+    } else {
+        const vocal = form.vocal.value;
+    }
+
     try {
         const metadata = {
         arranger: form.arranger.value,
         composer: form.composer.value,
         lyricist: form.lyricist.value,
         title: form.title.value,
-        vocal: form.vocal.value
+        vocal: vocal
         };
 
         const zipWriter = new zip.ZipWriter(
