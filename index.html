@@ -126,10 +126,9 @@
     button.disabled = true;
     loadingDiv.classList.remove("hidden");
 
+    let vocal = form.vocal.value;
     if (form.author.value !== "") {
-        const vocal = form.vocal.value + "　譜面作者：" + form.author.value;
-    } else {
-        const vocal = form.vocal.value;
+        vocal = form.vocal.value + "　譜面作者：" + form.author.value;
     }
 
     try {
